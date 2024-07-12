@@ -9,6 +9,8 @@ Crie um Repositório  com o nome "2024-IA24".
 
 Lembrando: O Repositório  deve ser publico e com o arquivo README incluso.
 
+Agora, voce ira clicar no botao `code` e depois em `codespace on main`
+
 # Iniciando um projeto Node.js com TypeScript
 
 No Terminal digite os seguintes comandos, lembre de executar um por vez.
