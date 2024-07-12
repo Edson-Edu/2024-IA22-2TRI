@@ -1,0 +1,8 @@
+POST https://musical-space-tribble-7697wjv5qj63p4qr-3333.app.github.dev/users HTTP/1.1
+Content-Type: application/json
+Authorization: token xxx
+
+{
+  "name": "John Doe",
+  "email": "john@example.com"
+}
