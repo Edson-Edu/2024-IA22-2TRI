@@ -9,9 +9,11 @@ Crie um Repositório  com o nome "2024-IA24".
 
 Lembrando: O Repositório  deve ser publico e com o arquivo README incluso.
 
-Agora, voce ira clicar no botao `code` e depois em `codespace on main`
+Agora, voce ira clicar no botao `code` e depois em `codespace on main` e espere aparecer a logo do github para continuar os proximos passos. 
 
 # Iniciando um projeto Node.js com TypeScript
+
+
 
 No Terminal digite os seguintes comandos, lembre de executar um por vez.
 
@@ -28,7 +30,11 @@ touch src/app.ts
 # Configurando o ` tsconfig.json ` 
 
 Mude a linha ` "outDir": "./" ` , para 
-` "outDir": "./dist" `, e adicione a linha ` "rootDir": "./src"`, seu arquivo de configuração do compilador do TypeScript ficará mais ou menos assim.
+` "outDir": "./dist" `, e adicione embaixo a linha ` "rootDir": "./src"`, seu arquivo de configuração do compilador do TypeScript ficará mais ou menos assim.
+
+Dica: Para encontrar rapidamente: `Control + F` e coloque `outDir`.
+
+Lembrando: Cuidado com as ""  para nao ter nenhum erro.
 
 ```javascript
 {
@@ -45,16 +51,16 @@ Mude a linha ` "outDir": "./" ` , para
 }
 ```` 
 
-Dica: Para encontrar rapidamente: `Control + F` e coloque `outDir`.
+
 
 
 # Configurando o `package.jon`
-Adicione o seguinte script ao seu package.json
+Adicione o seguinte dentro de script(**Que voce pode encontar utilizando Control+F**) no seu package.json
+
+!Cuidado para nao adicionar ao arquivo `package-lock-json`
 
 ```javascript
- "scripts": {
   "dev": "npx nodemon src/app.ts"
-}
 ```` 
 E o seu codigo ficara assim: 
 ```javascript
@@ -67,7 +73,7 @@ E o seu codigo ficara assim:
 
 
 # Criando arquivo inicial do servidor
-No arquivo app.ts adicione: 
+No arquivo app.ts (que esta dentro da `pasta src` ) adicione: 
 
 
 ```javascript
@@ -97,10 +103,9 @@ npm run dev
 ```` 
 Se tudo ocorrer bem, você  verá a mensagem Server running on port 3333 no terminal.
 
-# Testado o servidor
-
 Apos executar o comando anterior, aparecera uma opção de execução e você  devera clicar no botao `Abrir no navegador`.
 E você  vera a mensagem `Hello World`
+
 
 # Configurando Banco de dados
 Crie um arquivo `database.ts` dentro da pasta `src` e adicione o seguinte código.
@@ -133,7 +138,7 @@ export async function connect() {
 ```` 
 
 # Adicionando o banco de dados
-No antigo arquivo `app.ts` troque todo o codigo por este
+No antigo arquivo `app.ts` troque **todo** o codigo por este
 
 ```javascript
 import express from 'express';
@@ -174,10 +179,34 @@ app.listen(port, () => {
 
 # Testando a inserção de dados
 
-Crie um arquivo chamada `teste.http` e adicione o seguinte codigo
+Crie um arquivo chamada `teste.http` **fora da pasta src** e adicione o seguinte codigo
 
 ```javascript
-POST https://musical-space-tribble-7697wjv5qj63p4qr-3333.app.github.dev/users HTTP/1.1
+POST (>>>>>>>>>>SEU LINK /users<<<<<<<<<<) HTTP/1.1
+Content-Type: application/json
+Authorization: token xxx
+
+{
+  "name": "John Doe",
+  "email": "john@example.com"
+}
+
+````
+
+Ao lado de `terminal` tera a opção portas (tambem pode estar dentro dos 3 pontinhos :))
+
+Clique em `Portas` e aparecera a sua porta, com o endereco e a visibilidade.
+
+Com o ponteiro do mouse encima do numero da porta(3333), clique com o botao direito e encontre a opção `Visibilidade da porta`. Troque de **Private** para **Public**
+
+Agora clique no link (Endereço Encaminhado) e o copie. Após copiado, substitua no codigo anterior onde esta escrito **>SEU LINK<**
+
+No final do seu link, lembre de manter no final `/users`.
+
+Seu codigo ficara mais ou menos assim
+
+````javascript
+POST https://meusite/users HTTP/1.1
 Content-Type: application/json
 Authorization: token xxx
 
