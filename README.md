@@ -96,7 +96,9 @@ app.listen(port, () => {
 ```` 
 
 # Iniciando o Servidor
-Para iniciar, você  devera digitar o seguinte comando no Terminal.
+Para iniciar, você  devera instalar a biblioteca **REST Client**, para fazer isso clique no icone que parece um cubo que esta sendo desmontado e pesquise `REST client` e clique em instalar. Aguarde a instalaçao para seguir o proximo passo.
+
+Agora para ver sua pagina, digite o seguinte comando no Terminal.
 
 ```javascript
 npm run dev
@@ -216,6 +218,7 @@ Authorization: token xxx
 }
 
 ````
+Agora, clique na opção **'Send Request'** que aparecera encima da primeira linha em **Post**.
 
 Se tudo ocorreu bem, voce abrira o link da primeira linha e aparecera o seguinte resultado
 ````javascript
