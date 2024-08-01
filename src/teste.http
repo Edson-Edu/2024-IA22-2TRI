@@ -8,7 +8,7 @@ Content-Type: application/json
 
 ####
 
-PUT https://musical-space-tribble-7697wjv5qj63p4qr-3333.app.github.dev/users/2 HTTP/1.1
+PUT https://musical-space-tribble-7697wjv5qj63p4qr-3333.app.github.dev/users/1 HTTP/1.1
 Content-Type: application/json
 
 {

@@ -12,21 +12,25 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
-app.post('/users', async (req, res) => {
-  const db = await connect();
-  const { name, email } = req.body;
-
-  const result = await db.run('INSERT INTO users (name, email) VALUES (?, ?)', [name, email]);
-  const user = await db.get('SELECT * FROM users WHERE id = ?', [result.lastID]);
-
-  res.json(user);
-});
-
 app.get('/users', async (req, res) => {
   const db = await connect();
   const users = await db.all('SELECT * FROM users');
-
   res.json(users);
+});
+
+app.get('/users/:id', async (req, res) => {
+  const db = await connect();
+  const { id } = req.params;
+  const users = await db.all('SELECT * FROM users WHERE id = ?', [id]);
+  res.json(users);
+});
+
+app.post('/users', async (req, res) => {
+  const db = await connect();
+  const { name, email } = req.body;
+  const result = await db.run('INSERT INTO users (name, email) VALUES (?, ?)', [name, email]);
+  const user = await db.get('SELECT * FROM users WHERE id = ?', [result.lastID]);
+  res.json(user);
 });
 
 app.put('/users/:id', async (req, res) => {
