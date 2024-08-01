@@ -229,8 +229,97 @@ Se tudo ocorreu bem, voce abrira o link da primeira linha e aparecera o seguinte
 }
 ````
 
+## Vamos aprendar mais um pouco de bd!
+
+Alem da requisição Post ( que envia os dados para o servidor) tambem temos o Update( que atualiza os dados) e Delete ( que apaga os dados).
+
+# Atualize ``teste.http``
+Ele ficará assim
 
 
+```javascript
+POST (>>>>>>>>>>SEU LINK /users<<<<<<<<<<) HTTP/1.1
+Content-Type: application/json
+Authorization: token xxx
+
+{
+  "name": "John Doe",
+  "email": "john@example.com"
+}
+####
+
+PUT  (>>>>>>>>>>SEU LINK /users/1<<<<<<<<<<) HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "John Doe update",
+  "email": "john@example.com"
+}
+
+####
+
+DELETE  (>>>>>>>>>>SEU LINK /users/1<<<<<<<<<<) HTTP/1.1
+
+
+```` 
+Tambem alteraremos ``app.ts``
+
+```javascript
+import express from 'express';
+import cors from 'cors';
+import { connect } from './database';
+
+const port = 3333;
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+app.post('/users', async (req, res) => {
+  const db = await connect();
+  const { name, email } = req.body;
+
+  const result = await db.run('INSERT INTO users (name, email) VALUES (?, ?)', [name, email]);
+  const user = await db.get('SELECT * FROM users WHERE id = ?', [result.lastID]);
+
+  res.json(user);
+});
+
+app.get('/users', async (req, res) => {
+  const db = await connect();
+  const users = await db.all('SELECT * FROM users');
+
+  res.json(users);
+});
+
+app.put('/users/:id', async (req, res) => {
+  const db = await connect();
+  const { name, email } = req.body;
+  const { id } = req.params;
+
+  await db.run('UPDATE users SET name = ?, email = ? WHERE id = ?', [name, email, id]);
+  const user = await db.get('SELECT * FROM users WHERE id = ?', [id]);
+
+  res.json(user);
+});
+
+app.delete('/users/:id', async (req, res) => {
+  const db = await connect();
+  const { id } = req.params;
+
+  await db.run('DELETE FROM users WHERE id = ?', [id]);
+
+  res.json({ message: 'User deleted' });
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+```` 
 
 ## Titulo
 
