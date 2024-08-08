@@ -203,7 +203,7 @@ Com o ponteiro do mouse encima do numero da porta(3333), clique com o botao dire
 
 Agora clique no link (Endereço Encaminhado) e o copie. Após copiado, substitua no codigo anterior onde esta escrito **>SEU LINK<**
 
-No final do seu link, lembre de manter no final `/users`.
+No final do seu link, lembre de manter no final `/users` e de retirar os parenteses e setinhas .
 
 Seu codigo ficara mais ou menos assim
 
@@ -320,6 +320,147 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 ```` 
+
+## Estilizando a pagina
+
+Crie uma pasta chamada ``public`` e um arquivo dentro da pasta chamado ``index.html`` 
+
+Dentro de ``ìndex.html`` adicione
+
+```javascript
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form>
+    <input type="text" name="name" placeholder="Nome">
+    <input type="email" name="email" placeholder="Email">
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--  -->
+    </tbody>
+  </table>
+
+  <script>
+    // 
+    const form = document.querySelector('form')
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault()
+
+      const name = form.name.value
+      const email = form.email.value
+
+      await fetch('/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email })
+      })
+
+      form.reset()
+      fetchData()
+    })
+
+    // 
+    const tbody = document.querySelector('tbody')
+
+    async function fetchData() {
+      const resp = await fetch('/users')
+      const data = await resp.json()
+
+      tbody.innerHTML = ''
+
+      data.forEach(user => {
+        const tr = document.createElement('tr')
+        tr.innerHTML = `
+          <td>${user.id}</td>
+          <td>${user.name}</td>
+          <td>${user.email}</td>
+          <td>
+            <button class="excluir">excluir</button>
+            <button class="editar">editar</button>
+          </td>
+        `
+
+        const btExcluir = tr.querySelector('button.excluir')
+        const btEditar = tr.querySelector('button.editar')
+
+        btExcluir.addEventListener('click', async () => {
+          await fetch(`/users/${user.id}`, { method: 'DELETE' })
+          tr.remove()
+        })
+
+        btEditar.addEventListener('click', async () => {
+          const name = prompt('Novo nome:', user.name)
+          const email = prompt('Novo email:', user.email)
+
+          await fetch(`/users/${user.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email })
+          })
+
+          fetchData()
+        })
+
+        tbody.appendChild(tr)
+      })
+    }
+
+    fetchData()
+  </script>
+</body>
+
+</html>
+````
+
+### E agora iremos alterar novamente ``app.ts``
+
+na linha 9 onde tem isso ``app.use(express.json());``
+
+voce ira colocar embaixo o seguinte codigo
+
+```javascript
+app.use(express.static(__dirname + '/../public'))
+```` 
+
+e o comeco do seu arquivo ``app.ts`` deve estar assim
+
+```javascript
+import express from 'express'
+import cors from 'cors'
+import { connect } from './database'
+
+const port = 3333
+const app = express()
+
+app.use(cors())
+app.use(express.json())
+app.use(express.static(__dirname + '/../public'))
+
+app.get('/users', async (req, res) => {
+  const db = await connect()
+  const users = await db.all('SELECT * FROM users')
+  res.json(users)
+})
+````
 
 ## Titulo
 
