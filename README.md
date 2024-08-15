@@ -451,7 +451,7 @@ html, body {
   }
   
   body {
-    background-image: url('seattle.jpg');
+    background-image: url(https://raw.githubusercontent.com/Edson-Edu/2024-IA22-2TRI/main/public/seattle.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -550,6 +550,7 @@ html, body {
   table button.editar:hover {
     background-color: #218838;
   }
+  
   
 ```
 
