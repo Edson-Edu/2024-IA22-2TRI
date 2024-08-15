@@ -8,14 +8,18 @@ Vamos programar nosso primeiro servidor com rotas!! :)
 Crie um Repositório  com o nome "2024-IA24".
 
 Lembrando: O Repositório  deve ser publico e com o arquivo README incluso.
+![.](./img/criar_repositorio.PNG)
+Agora nessa tela, voce ira clicar no botao `code` > `codespace on main` e depois no ``Simbolo + ``
+![.](./img/codespace.PNG)
 
-Agora, voce ira clicar no botao `code` e depois em `codespace on main` e espere aparecer a logo do github para continuar os proximos passos. 
+Espere a paginar carregar para continuar os proximos passos. Sua tela devera estar assim:
+ ![.](./img/tela_inicial.PNG)
 
 # Iniciando um projeto Node.js com TypeScript
 
 
 
-No Terminal digite os seguintes comandos, lembre de executar um por vez.
+No Terminal digite os seguintes comandos, lembre de executar um por vez e esperar o tempo de carregamento de cada.
 
 ```
 npm init -y
@@ -329,37 +333,42 @@ Dentro de ``ìndex.html`` adicione
 
 ```javascript
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="index.css">
+  <title>Grey's Anatomy</title>
 </head>
 
 <body>
-  <form>
-    <input type="text" name="name" placeholder="Nome">
-    <input type="email" name="email" placeholder="Email">
-    <button type="submit">Cadastrar</button>
-  </form>
+  <div class="container">
+    <h1>Grey's Anatomy</h1>
+    <h3>Petição contra o fim da série</h3>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!--  -->
-    </tbody>
-  </table>
+    <form>
+      <input type="text" name="name" placeholder="Nome" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <button type="submit">Cadastrar</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--  -->
+      </tbody>
+    </table>
+  </div>
 
   <script>
-    // 
     const form = document.querySelector('form')
 
     form.addEventListener('submit', async (event) => {
@@ -378,7 +387,6 @@ Dentro de ``ìndex.html`` adicione
       fetchData()
     })
 
-    // 
     const tbody = document.querySelector('tbody')
 
     async function fetchData() {
@@ -394,8 +402,8 @@ Dentro de ``ìndex.html`` adicione
           <td>${user.name}</td>
           <td>${user.email}</td>
           <td>
-            <button class="excluir">excluir</button>
-            <button class="editar">editar</button>
+            <button class="excluir">Excluir</button>
+            <button class="editar">Editar</button>
           </td>
         `
 
@@ -430,6 +438,120 @@ Dentro de ``ìndex.html`` adicione
 
 </html>
 ````
+
+## Vamos estilizar essa pagina
+ criei um arquivo dentro de public chamado ``index.css``
+
+ e adicione:
+```javascript
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-image: url('seattle.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    line-height: 1.5;
+  }
+  
+  .container {
+    background: rgba(0, 0, 0, 0.7); 
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 50px auto;
+  }
+  
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+  
+  h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  form input[type="text"],
+  form input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    width: calc(50% - 22px);
+  }
+  
+  form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  table th, table td {
+    padding: 10px;
+    border: 1px solid #fff;
+  }
+  
+  table th {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  table td {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  
+  table button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin: 2px;
+  }
+  
+  table button.excluir {
+    background-color: #dc3545;
+  }
+  
+  table button.excluir:hover {
+    background-color: #c82333;
+  }
+  
+  table button.editar {
+    background-color: #28a745;
+  }
+  
+  table button.editar:hover {
+    background-color: #218838;
+  }
+  
+```
 
 ### E agora iremos alterar novamente ``app.ts``
 
