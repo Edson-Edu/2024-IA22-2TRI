@@ -237,7 +237,7 @@ Se tudo ocorreu bem, voce abrira o link da primeira linha e aparecera o seguinte
 }
 ````
 
-## Vamos aprendar mais um pouco de bd!
+## Vamos aprender mais um pouco de bd!
 
 Alem da requisição Post ( que envia os dados para o servidor) tambem temos o Update( que atualiza os dados) e Delete ( que apaga os dados).
 
