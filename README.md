@@ -4,6 +4,8 @@ Programação II
 
 Vamos programar nosso primeiro servidor com rotas!! :)
 
+!Leia todo o topico antes de iniciar as tarefas!
+
 # Iniciando um Repositório  no CodeSpace
 Crie um Repositório  com o nome "2024-IA24".
 
@@ -33,8 +35,8 @@ touch src/app.ts
 
 # Configurando o ` tsconfig.json ` 
 
-Mude a linha ` "outDir": "./" ` , para 
-` "outDir": "./dist" `, e adicione embaixo a linha ` "rootDir": "./src"`, seu arquivo de configuração do compilador do TypeScript ficará mais ou menos assim.
+No arquivo ``tsconig.json`` mude a linha ` "outDir": "./" ` , para 
+` "outDir": "./dist" `, e adicione embaixo a linha ` "rootDir": "./src"`, (lembre-se de adicionar uma virgula antes de pular a linha e o ``// antes de rootDir``) seu arquivo de configuração do compilador do TypeScript ficará mais ou menos assim.
 
 Dica: Para encontrar rapidamente: `Control + F` e coloque `outDir`.
 
@@ -59,7 +61,9 @@ Lembrando: Cuidado com as ""  para nao ter nenhum erro.
 
 
 # Configurando o `package.jon`
-Adicione o seguinte dentro de script(**Que voce pode encontar utilizando Control+F**) no seu package.json
+No arquivo ``package.json``. Adicione o seguinte dentro de script(**Que voce pode encontar utilizando Control+F**) no seu package.json.
+
+Lembre da virgula no final de test e antes de dev
 
 !Cuidado para nao adicionar ao arquivo `package-lock-json`
 
