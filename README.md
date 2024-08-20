@@ -6,6 +6,8 @@ Vamos programar nosso primeiro servidor com rotas!! :)
 
 !Leia todo o topico antes de iniciar as tarefas!
 
+### Qualquer duvida / erro mande mensagem nesse Whatssap: (47) 98440-0475
+
 # Iniciando um Repositório  no CodeSpace
 Crie um Repositório  com o nome "2024-IA24".
 
