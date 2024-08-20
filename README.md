@@ -480,7 +480,7 @@ body {
 
 .container:hover {
   transform: scale(1.03)
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Enhanced shadow on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
 
 h1 {
