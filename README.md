@@ -469,24 +469,24 @@ body {
 }
 
 .container {
-  background: rgba(0, 0, 0, 0.75); 
+  background: rgba(0, 0, 0, 0.75);
   border-radius: 15px; 
   padding: 30px;
   max-width: 800px;
   margin: 50px auto;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .container:hover {
-  transform: scale(1.03)
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+  transform: scale(1.03); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); 
 }
 
 h1 {
   font-size: 2.8em;
   margin-bottom: 15px;
-  color: #e0e0e0;
+  color: #e0e0e0; 
   transition: color 0.3s ease;
 }
 
@@ -504,27 +504,27 @@ form {
 form input[type="text"],
 form input[type="email"] {
   padding: 12px;
-  border: 1px solid #666; 
+  border: 1px solid #666;
   border-radius: 8px;
   margin: 8px;
   width: calc(50% - 24px);
   background-color: rgba(255, 255, 255, 0.15);
-  color: #f5f5f5; 
+  color: #f5f5f5;
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 form input[type="text"]:focus,
 form input[type="email"]:focus {
   background-color: rgba(255, 255, 255, 0.25); 
-  border-color: #007BFF;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  border-color: #007BFF; 
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); 
 }
 
 form button {
   padding: 12px 25px;
   border: none;
   border-radius: 8px;
-  background-color: #007BFF; 
+  background-color: #007BFF;
   color: #fff;
   cursor: pointer;
   font-size: 1.1em;
@@ -533,7 +533,7 @@ form button {
 
 form button:hover {
   background-color: #0056b3;
-  transform: scale(1.05);
+  transform: scale(1.05); 
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }
 
@@ -545,13 +545,13 @@ table {
 
 table th, table td {
   padding: 12px;
-  border: 1px solid #555;
+  border: 1px solid #555; 
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 table th {
-  background-color: rgba(0, 0, 0, 0.65); 
-  color: #e0e0e0; 
+  background-color: rgba(0, 0, 0, 0.65);
+  color: #e0e0e0;
 }
 
 table td {
@@ -570,7 +570,7 @@ table button {
 }
 
 table button.excluir {
-  background-color: #dc3545; 
+  background-color: #dc3545;
 }
 
 table button.excluir:hover {
@@ -579,13 +579,14 @@ table button.excluir:hover {
 }
 
 table button.editar {
-  background-color: #28a745;
+  background-color: #28a745; 
 }
 
 table button.editar:hover {
   background-color: #218838;
   transform: scale(1.05); 
 }
+
 
   
 ```
