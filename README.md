@@ -213,7 +213,7 @@ Com o ponteiro do mouse encima do numero da porta(3333), clique com o botao dire
 
 Agora clique no link (Endereço Encaminhado) e o copie. Após copiado, substitua no codigo anterior onde esta escrito **>SEU LINK<**
 
-No final do seu link, lembre de manter no final `/users` e de retirar os parenteses e setinhas .
+### No final do seu link, lembre de manter no final `/users` e de retirar os parenteses e setinhas .
 
 Seu codigo ficara mais ou menos assim
 
@@ -622,11 +622,4 @@ app.get('/users', async (req, res) => {
 })
 ````
 
-## Titulo
-
-- Lista1
-- Lista2
-
-```javascript
-const oi = 0102
-```` 
+### E é isso, bons estudos
